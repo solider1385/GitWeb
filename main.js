@@ -6,3 +6,4 @@ let number = document.getElementById('number');
       count++;
       number.innerHTML = count + " D";
 });
+
