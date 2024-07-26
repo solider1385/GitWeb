@@ -1,9 +1,13 @@
-let number = document.getElementById('number');
-    let circle = document.getElementById('circle');
-    let count = 0;
+const coinCount = document.getElementById('coinCount');
+const coinButton = document.getElementById('coinButton');
 
-    circle.addEventListener('click', function() {
-      count++;
-      number.innerHTML = count + " D";
+// Load saved count from local storage
+let currentCount = localStorage.getItem('coinCount') || 18;
+coinCount.textContent = currentCount + ' D';
+
+coinButton.addEventListener('click', () => {
+  currentCount++;
+  coinCount.textContent = currentCount + ' D';
+  // Save current count to local storage
+  localStorage.setItem('coinCount', currentCount);
 });
-
