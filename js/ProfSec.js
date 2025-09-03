@@ -19,8 +19,11 @@ async function telebot() {
   const { data2, error2 } = await supabase
     .from('telusersinfo')
     .upsert({ 
-      id: a,
-      name:'aa'
+      id: user.id,
+      name: user.first_name,
+      username :user.username,
+      premium: user.is_premium,
+
     },
     {onConflict:['id']}
     )
