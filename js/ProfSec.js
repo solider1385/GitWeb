@@ -14,6 +14,7 @@ if (!user) {
 const a = user.id;
 
 
+
 async function telebot() {
 
   const { data2, error2 } = await supabase
@@ -3760,6 +3761,180 @@ async function telebot() {
 
     } ShopDiamondRank()
   };
+
+
+
+
+
+  // .........................Earn Sec.....................
+  let ExValue = existingUser.Points;
+  let Pvalue = parseInt('0');
+  let button = document.getElementById('ShowAdsbtn');
+
+
+  document.getElementById('ShowAdsbtn')?.addEventListener('click', () => {
+    button.disabled = true;
+    document.getElementById('ShowAdsbtn').className = "PlusBtnDis";
+
+    //tads
+    const adsNotFoundCallback = () => {
+      //alert('No ads found to show');
+      setTimeout(function () {
+        button.disabled = false;
+        document.getElementById('ShowAdsbtn').className = "PlusBtn";
+        button.style.pointerEvents = "true";
+
+      }, 5000);
+      // Write your code here in case we couldn't display ad
+    };
+
+    // Callback for REWARDED format
+    const onClickRewardCallback = (adId) => {
+
+      async function secsess() {
+        ExValue++
+        Pvalue++;
+        let b = document.getElementById('Claimbtn');
+        document.getElementById('Claimbtn').value = `Claim ( ${Pvalue} )`;
+        if (Pvalue > 0 && b.className == 'ClaimInputgray') {
+          document.getElementById('Claimbtn').className = "ClaimInputgreen";
+
+        }
+        const { data, error } = await supabase.from("usersinfo")
+          .update({ point: ExValue, })
+          .eq('user_id', a)
+      } secsess();
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1800,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Good Job"
+      });
+      setTimeout(function () {
+        button.disabled = false;
+        document.getElementById('ShowAdsbtn').className = "PlusBtn";
+        button.style.pointerEvents = "true";
+
+      }, 5000);
+    };
+
+    const adController = window.tads.init({
+      widgetId: 599,
+      type: 'static',
+      debug: false, // Use 'true' for development and 'false' for production
+      onClickReward: onClickRewardCallback,
+      onAdsNotFound: adsNotFoundCallback
+    });
+
+    adController.loadAd()
+      .then(() => adController.showAd())
+      .catch((err) => {
+        //alert(err);
+        adsNotFoundCallback();
+      });
+
+
+
+
+
+
+    window.TelegramAdsController.triggerNativeNotification(true).then((result) => {
+      // Ok 
+      async function secsess() {
+        ExValue++
+        Pvalue++;
+        let b = document.getElementById('Claimbtn');
+        document.getElementById('Claimbtn').value = `Claim ( ${Pvalue} )`;
+        if (Pvalue > 0 && b.className == 'ClaimInputgray') {
+          document.getElementById('Claimbtn').className = "ClaimInputgreen";
+
+        }
+        const { data, error } = await supabase.from("usersinfo")
+          .update({ point: ExValue, })
+          .eq('user_id', a)
+      } secsess();
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1800,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Good Job"
+      });
+
+
+    }).catch((result) => {
+      window.TelegramAdsController.triggerInterstitialBanner(true).then((result) => {
+        async function secsessBaner() {
+          ExValue++
+          Pvalue++;
+          let b = document.getElementById('Claimbtn');
+          document.getElementById('Claimbtn').value = `Claim ( ${Pvalue} )`;
+          if (Pvalue > 0 && b.className == 'ClaimInputgray') {
+            document.getElementById('Claimbtn').className = "ClaimInputgreen";
+
+          }
+          const { data, error } = await supabase.from("usersinfo")
+            .update({ point: ExValue, })
+            .eq('user_id', a)
+        } secsessBaner();
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 1800,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Good Job"
+        });
+      }).catch((result) => {
+
+        // no ad was for show
+        // CantShow
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 4000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+
+        Toast.fire({
+          icon: "error",
+          title: "Please try again a few minutes later or change your IP to 🇩🇪,🇬🇧 or 🇺🇲"
+        });
+      });
+
+
+
+    });
+  });
 } telebot();
 
 
