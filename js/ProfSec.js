@@ -14,7 +14,6 @@ if (!user) {
 const a = user.id;
 
 
-
 async function telebot() {
 
   const { data2, error2 } = await supabase
@@ -3800,7 +3799,7 @@ async function telebot() {
           document.getElementById('Claimbtn').className = "ClaimInputgreen";
 
         }
-        const { data, error } = await supabase.from("usersinfo")
+        const { data, error } = await supabase.from("telusersinfo")
           .update({ point: ExValue, })
           .eq('user_id', a)
       } secsess();
@@ -3858,7 +3857,7 @@ async function telebot() {
           document.getElementById('Claimbtn').className = "ClaimInputgreen";
 
         }
-        const { data, error } = await supabase.from("usersinfo")
+        const { data, error } = await supabase.from("telusersinfo")
           .update({ point: ExValue, })
           .eq('user_id', a)
       } secsess();
@@ -3890,7 +3889,7 @@ async function telebot() {
             document.getElementById('Claimbtn').className = "ClaimInputgreen";
 
           }
-          const { data, error } = await supabase.from("usersinfo")
+          const { data, error } = await supabase.from("telusersinfo")
             .update({ point: ExValue, })
             .eq('user_id', a)
         } secsessBaner();
@@ -4044,7 +4043,6 @@ document.getElementById('Noshopbtn').onclick = function () {
 
 
 // ...........................Earn Sec.................
-
 
 
 
