@@ -57,7 +57,7 @@ async function telebot() {
       .select()
 
     window.location.reload();
-  return;
+  
   };
   
 
@@ -3883,6 +3883,7 @@ document.getElementById('Noshopbtn').onclick = function () {
 
 
 // ...........................Earn Sec.................
+
 
 
 
