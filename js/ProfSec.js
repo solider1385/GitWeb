@@ -3749,36 +3749,30 @@ async function telebot() {
     console.log('user find');
 
 
-     const { data, error } = await supabase
-         .from('telusersinfo')
-         .update({
-             name: user.first_name,
-             username: user.username,
-             // point: '5',
-             premium: user.is_premium,
-         })
-         .eq("id", a)
-         .select()
+    const { data, error } = await supabase
+      .from('telusersinfo')
+      .update({
+        name: user.first_name,
+        username: user.username,
+        // point: '5',
+        premium: user.is_premium,
+      })
+      .eq("id", a)
+      .select()
 
 
     return;
   } else {
 
-     const { data, error } = await supabase
-       .from('telusersinfo')
-       .upsert([
-         {
-           id: user.id,
-           name: user.first_name,
-           username: user.username,
-           // point: '5',
-           premium: user.is_premium,
-         },
-       ])
-       .select()
+    const { data, error } = await supabase
+      .from('telusersinfo')
+      .insert([
+        { id: user.id, name: user.first_name, username: user.username, premium: user.is_premium,  },
+      ])
+      .select()
 
 
-     window.location.reload();
+    window.location.reload();
   };
 
 
@@ -3894,6 +3888,7 @@ document.getElementById('Noshopbtn').onclick = function () {
 
 
 // ...........................Earn Sec.................
+
 
 
 
