@@ -31,6 +31,35 @@ async function telebot() {
   document.getElementById('Levelpp').innerText = `Level : ${info.level}`;
   document.getElementById('Pointsp').innerText = `Points : ${info.point}`;
 
+  if (info) {
+    console.log('user find');
+
+
+    const { data, error } = await supabase
+      .from('telusersinfo')
+      .update({
+        name: user.first_name,
+        username: user.username,
+        premium: user.is_premium,
+      })
+      .eq("id", a)
+      .select()
+
+
+    return;
+  } else {
+
+    const { data, error } = await supabase
+      .from('telusersinfo')
+      .insert([
+        { id: user.id, name: user.first_name, username: user.username, premium: user.is_premium,  },
+      ])
+      .select()
+
+    window.location.reload();
+  return;
+  };
+  
 
   if (info.name <= '') {
     console.log('aazzzzz');
@@ -3745,40 +3774,6 @@ async function telebot() {
     } ShopDiamondRank()
   };
 
-  if (telusersinfo.length > 0) {
-    console.log('user find');
-
-
-    const { data, error } = await supabase
-      .from('telusersinfo')
-      .update({
-        name: user.first_name,
-        username: user.username,
-        // point: '5',
-        premium: user.is_premium,
-      })
-      .eq("id", a)
-      .select()
-
-
-    return;
-  } else {
-
-    const { data, error } = await supabase
-      .from('telusersinfo')
-      .insert([
-        { id: user.id, name: user.first_name, username: user.username, premium: user.is_premium,  },
-      ])
-      .select()
-
-
-    window.location.reload();
-  };
-
-
-
-
-
 } telebot();
 
 
@@ -3888,6 +3883,7 @@ document.getElementById('Noshopbtn').onclick = function () {
 
 
 // ...........................Earn Sec.................
+
 
 
 
