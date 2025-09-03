@@ -12,7 +12,7 @@ if (!user) {
 
 
 const a = user.id;
-// const a = '5486454164';
+
 
 async function telebot() {
   let { data: telusersinfo, error } = await supabase
@@ -3749,36 +3749,36 @@ async function telebot() {
     console.log('user find');
 
 
-    // const { data, error } = await supabase
-    //     .from('telusersinfo')
-    //     .update({
-    //         name: user.first_name,
-    //         username: user.username,
-    //         // point: '5',
-    //         premium: user.is_premium,
-    //     })
-    //     .eq("id", a)
-    //     .select()
+     const { data, error } = await supabase
+         .from('telusersinfo')
+         .update({
+             name: user.first_name,
+             username: user.username,
+             // point: '5',
+             premium: user.is_premium,
+         })
+         .eq("id", a)
+         .select()
 
 
     return;
   } else {
 
-    // const { data, error } = await supabase
-    //   .from('telusersinfo')
-    //   .upsert([
-    //     {
-    //       id: user.id,
-    //       name: user.first_name,
-    //       username: user.username,
-    //       // point: '5',
-    //       premium: user.is_premium,
-    //     },
-    //   ])
-    //   .select()
+     const { data, error } = await supabase
+       .from('telusersinfo')
+       .upsert([
+         {
+           id: user.id,
+           name: user.first_name,
+           username: user.username,
+           // point: '5',
+           premium: user.is_premium,
+         },
+       ])
+       .select()
 
 
-    // window.location.reload();
+     window.location.reload();
   };
 
 
@@ -3850,12 +3850,6 @@ function sendEmail() {
 };
 
 
-
-// 3 foter btn
-// <input type="button" id="Profileinput" class="textshadowbtn" value="Profile">
-//   <input type="button" id="Shopinput" value="Shop">
-//   <input type="button" id="Earninput" value="Earn">
-
 const Profbtn = document.getElementById('Profileinput');
 const shopbtn = document.getElementById('Shopinput');
 const earnbtn = document.getElementById('Earninput');
@@ -3898,19 +3892,9 @@ document.getElementById('Noshopbtn').onclick = function () {
 };
 
 
-// async function checkAndkInsertUser() {
-//   const { data: kkexistingUser, error } = await supabase
-//     .from('ShopFactor')
-//     .select('*')
-
-
-//   console.log(kkexistingUser);
-// } checkAndkInsertUser();
-
-
-
 
 // ...........................Earn Sec.................
+
 
 
 
