@@ -3767,7 +3767,7 @@ async function telebot() {
 
 
   // .........................Earn Sec.....................
-  let ExValue = existingUser.Points;
+  let ExValue = info.point;
   let Pvalue = parseInt('0');
   let button = document.getElementById('ShowAdsbtn');
 
@@ -4044,6 +4044,7 @@ document.getElementById('Noshopbtn').onclick = function () {
 
 
 // ...........................Earn Sec.................
+
 
 
 
