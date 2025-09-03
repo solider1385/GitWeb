@@ -15,13 +15,25 @@ const a = user.id;
 
 
 async function telebot() {
+
+  const { data2, error2 } = await supabase
+    .from('telusersinfo')
+    .upsert({ 
+      id: a,
+      name:'aa'
+    },
+    {onConflict:['id']}
+    )
+    .select()
+
+
   let { data: telusersinfo, error } = await supabase
     .from('telusersinfo')
     .select('*')
     .eq('id', a)
     .single();
 
-  
+
   // ................info...........
   let info = telusersinfo;
   document.getElementById('pointvalue').innerText = `${info.point}`;
@@ -31,35 +43,7 @@ async function telebot() {
   document.getElementById('Levelpp').innerText = `Level : ${info.level}`;
   document.getElementById('Pointsp').innerText = `Points : ${info.point}`;
 
-  if (info) {
-    console.log('user find');
 
-
-    const { data, error } = await supabase
-      .from('telusersinfo')
-      .update({
-        name: user.first_name,
-        username: user.username,
-        premium: user.is_premium,
-      })
-      .eq("id", a)
-      .select()
-
-
-    return;
-  } else {
-
-    const { data, error } = await supabase
-      .from('telusersinfo')
-      .insert([
-        { id: user.id, name: user.first_name, username: user.username, premium: user.is_premium,  },
-      ])
-      .select()
-
-    window.location.reload();
-  
-  };
-  
 
   if (info.name <= '') {
     console.log('aazzzzz');
@@ -2648,7 +2632,7 @@ async function telebot() {
       }
 
       const DiamondPack = DiamondRank;
-      
+
       document.getElementById('Gem110').innerText = `${DiamondPack.find(item => item.PackName === '100 Gem Free Fire').PNeed}`;
       document.getElementById('FreeDiv110').onclick = function () {
         document.getElementById('id').value = '';
@@ -2818,7 +2802,7 @@ async function telebot() {
                           Gmail: Email221.value,
                           id_Uid_address: Id221.value,
                           Player_Rank: info.rank,
-                          userTelid : info.id,
+                          userTelid: info.id,
 
                         },
                       ])
@@ -2932,7 +2916,7 @@ async function telebot() {
                           Gmail: Email530.value,
                           id_Uid_address: Id530.value,
                           Player_Rank: info.rank,
-                          userTelid : info.id,
+                          userTelid: info.id,
 
                         },
                       ])
@@ -3038,7 +3022,7 @@ async function telebot() {
                           Gmail: Email1188.value,
                           id_Uid_address: Id1188.value,
                           Player_Rank: info.rank,
-                          userTelid : info.id,
+                          userTelid: info.id,
 
                         },
                       ])
@@ -3144,7 +3128,7 @@ async function telebot() {
                           Gmail: Email2200.value,
                           id_Uid_address: Id2200.value,
                           Player_Rank: info.rank,
-                          userTelid : info.id,
+                          userTelid: info.id,
 
                         },
                       ])
@@ -3251,7 +3235,7 @@ async function telebot() {
                           Gmail: EmailUC60.value,
                           id_Uid_address: IdUC60.value,
                           Player_Rank: info.rank,
-                          userTelid : info.id,
+                          userTelid: info.id,
 
                         },
                       ])
@@ -3357,7 +3341,7 @@ async function telebot() {
                           Gmail: Email325UC.value,
                           id_Uid_address: Id325UC.value,
                           Player_Rank: info.rank,
-                          userTelid : info.id,
+                          userTelid: info.id,
 
                         },
                       ])
@@ -3463,7 +3447,7 @@ async function telebot() {
                           Gmail: Email660UC.value,
                           id_Uid_address: Id660UC.value,
                           Player_Rank: info.rank,
-                          userTelid : info.id,
+                          userTelid: info.id,
 
                         },
                       ])
@@ -3612,7 +3596,7 @@ async function telebot() {
                           Gmail: Email15TRC20.value,
                           id_Uid_address: Id15TRC20.value,
                           Player_Rank: info.rank,
-                          userTelid : info.id,
+                          userTelid: info.id,
 
                         },
                       ])
@@ -3724,7 +3708,7 @@ async function telebot() {
                           Gmail: Email50TRC20.value,
                           id_Uid_address: Id50TRC20.value,
                           Player_Rank: info.rank,
-                          userTelid : info.id,
+                          userTelid: info.id,
 
                         },
                       ])
@@ -3773,7 +3757,6 @@ async function telebot() {
 
     } ShopDiamondRank()
   };
-
 } telebot();
 
 
@@ -3883,7 +3866,6 @@ document.getElementById('Noshopbtn').onclick = function () {
 
 
 // ...........................Earn Sec.................
-
 
 
 
