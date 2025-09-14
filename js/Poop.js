@@ -12,7 +12,8 @@ if (!user) {
 
 
 const a = user.id;
-
+// const a = "17";
+alert(a);
 
 async function userifoo() {
     let { data: telusersinfo, error1 } = await supabase
