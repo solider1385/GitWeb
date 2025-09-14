@@ -12,10 +12,23 @@ if (!user) {
 
 
 const a = user.id;
-// const a = "17";
-alert(a);
+// alert(a)
 
 async function userifoo() {
+
+    const { data2, error2 } = await supabase
+    .from('telusersinfo')
+    .upsert({ 
+      id: user.id,
+      name: user.first_name,
+      username :user.username,
+      premium: user.is_premium,
+
+    },
+    {onConflict:['id']}
+    )
+    .select()
+
     let { data: telusersinfo, error1 } = await supabase
         .from('telusersinfo')
         .select('*')
